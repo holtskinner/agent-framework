@@ -17,20 +17,22 @@ using System.Text.Json.Serialization.Metadata;
 using Microsoft.Shared.Diagnostics;
 using Microsoft.Extensions.AI;
 
-#pragma warning disable S109 // Magic numbers should not be used
-#pragma warning disable S1121 // Assignments should not be made from within sub-expressions
-
 namespace Microsoft.Agents.AI;
 
 /// <summary>
 /// Represents the response to an <see cref="AIAgent"/> run request, containing messages and metadata about the interaction.
 /// </summary>
 /// <remarks>
+/// <para>
 /// <see cref="AgentRunResponse"/> provides one or more response messages and metadata about the response.
 /// A typical response will contain a single message, however a response may contain multiple messages
 /// in a variety of scenarios. For example, if the agent internally invokes functions or tools, performs
 /// RAG retrievals or has other complex logic, a single run by the agent may produce many messages showing
 /// the intermediate progress that the agent made towards producing the agent result.
+/// </para>
+/// <para>
+/// To get the text result of the response, use the <see cref="Text"/> property or simply call <see cref="ToString()"/> on the <see cref="AgentRunResponse"/>.
+/// </para>
 /// </remarks>
 public class AgentRunResponse
 {
